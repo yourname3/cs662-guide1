@@ -1,31 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://2j7r4koe73pe"]
+[gd_scene load_steps=10 format=3 uid="uid://2j7r4koe73pe"]
 
-[ext_resource type="Texture2D" uid="uid://b7fyhsc1whupp" path="res://output.png" id="1_g75we"]
-[ext_resource type="Shader" path="res://mono_sdf.gdshader" id="1_pinsa"]
+[ext_resource type="Shader" path="res://sdf.gdshader" id="1_pinsa"]
+[ext_resource type="Texture2D" uid="uid://bff1mji50ykfd" path="res://a_sdf.png" id="2_ajaij"]
 [ext_resource type="Shader" path="res://msdf.gdshader" id="3_ftdyb"]
-[ext_resource type="Texture2D" uid="uid://bjya2pa7p0a5p" path="res://msdf.png" id="4_i2lbi"]
+[ext_resource type="Shader" path="res://simple_bitmap.gdshader" id="3_pkvsb"]
+[ext_resource type="Texture2D" uid="uid://btghlvp05ix8i" path="res://a_render.png" id="4_281g0"]
+[ext_resource type="Texture2D" uid="uid://dqxcpqry7t7eb" path="res://a_msdf.png" id="4_ip03e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x4p5m"]
 shader = ExtResource("1_pinsa")
-shader_parameter/bias = 0.0
-shader_parameter/stroke = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7fpk"]
+shader = ExtResource("3_pkvsb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xb6oe"]
 shader = ExtResource("3_ftdyb")
-shader_parameter/bias = null
-shader_parameter/stroke = null
 
 [node name="Node2D" type="Node2D"]
 
 [node name="sdf" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_x4p5m")
-texture = ExtResource("1_g75we")
+position = Vector2(-1, 1)
+texture = ExtResource("2_ajaij")
+
+[node name="sdf2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_e7fpk")
+position = Vector2(-64, 1)
+texture = ExtResource("4_281g0")
 
 [node name="msdf" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xb6oe")
-scale = Vector2(2, 2)
-texture = ExtResource("4_i2lbi")
+position = Vector2(61, 1)
+texture = ExtResource("4_ip03e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(14.035, 14.035)
+zoom = Vector2(9.59, 9.59)
